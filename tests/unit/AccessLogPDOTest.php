@@ -42,4 +42,11 @@ class AccessLogPDOTest extends PHPUnit_Extensions_Database_TestCase {
       dirname(__FILE__)."/access_log.yml"
     );
   }
+
+public function tearDown() {
+        $conn = $this->getConnection();
+        $pdo = $conn->getConnection();
+        $pdo->exec("DROP TABLE IF EXISTS access_log;");
+}
+
 }
